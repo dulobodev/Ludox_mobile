@@ -1,0 +1,288 @@
+/* login */
+
+position: absolute;
+width: 430px;
+height: 932px;
+left: 28629px;
+top: 24912px;
+
+background: #151414;
+
+
+/* Rectangle 26 */
+
+position: absolute;
+width: 235px;
+height: 35px;
+left: 98px;
+top: 585px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Rectangle 28 */
+
+position: absolute;
+width: 22px;
+height: 20px;
+left: 247px;
+top: 640px;
+
+background: #FFFFFF;
+border-radius: 15px;
+
+
+/* Group 1 */
+
+position: absolute;
+width: 81px;
+height: 140px;
+left: 175px;
+top: 135px;
+
+
+
+/* Vector 1 */
+
+position: absolute;
+width: 51.23px;
+height: 92.88px;
+left: 175px;
+top: 182.12px;
+
+background: #FFFFFF;
+
+
+/* Vector 2 */
+
+position: absolute;
+width: 51.23px;
+height: 92.88px;
+left: 204.77px;
+top: 135px;
+
+background: #FFFFFF;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Line 1 */
+
+position: absolute;
+width: 235px;
+height: 0px;
+left: 98px;
+top: 420px;
+
+border: 1px solid rgba(240, 240, 240, 0.75);
+
+
+/* Line 2 */
+
+position: absolute;
+width: 235px;
+height: 0px;
+left: 98px;
+top: 465px;
+
+border: 1px solid rgba(240, 240, 240, 0.75);
+
+
+/* Rectangle 27 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 15px;
+height: 15px;
+left: 98px;
+top: 485px;
+
+border: 1px solid rgba(255, 255, 255, 0.5);
+border-radius: 2px;
+
+
+/* Lembrar de mim */
+
+position: absolute;
+width: 73px;
+height: 13px;
+left: 118px;
+top: 486px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+
+color: rgba(255, 255, 255, 0.8);
+
+
+
+/* Esqueceu a senha? */
+
+position: absolute;
+width: 86px;
+height: 13px;
+left: 247px;
+top: 486px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+
+color: rgba(255, 255, 255, 0.8);
+
+
+
+/* Senha */
+
+position: absolute;
+width: 28px;
+height: 13px;
+left: 98px;
+top: 450px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.45);
+
+
+
+/* E-mail */
+
+position: absolute;
+width: 28px;
+height: 13px;
+left: 98px;
+top: 405px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.45);
+
+
+
+/* Fazer login com */
+
+position: absolute;
+width: 85px;
+height: 13px;
+left: 173px;
+top: 711px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.8);
+
+
+
+/* Fazer cadastro */
+
+position: absolute;
+width: 85px;
+height: 13px;
+left: 162px;
+top: 643px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.8);
+
+
+
+/* Iniciar Sessão */
+
+position: absolute;
+width: 105px;
+height: 16px;
+left: 163px;
+top: 595px;
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 23px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #151414;
+
+
+
+/* Facebook */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 153px;
+top: 749px;
+
+background: url(.png);
+
+
+/* Google */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 203px;
+top: 749px;
+
+background: url(.png);
+
+
+/* TikTok */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 253px;
+top: 749px;
+
+background: url(.png);
+
+
+/* Back Arrow */
+
+position: absolute;
+width: 14px;
+height: 14px;
+left: 251px;
+top: 643px;
+
+background: url(.png);
+transform: matrix(-1, 0, 0, 1, 0, 0);
