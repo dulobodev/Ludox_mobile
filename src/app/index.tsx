@@ -1,51 +1,69 @@
-import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack } from 'expo-router';
+import { useEffect, useRef, useState } from "react";
+import { View, Animated, StyleSheet } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { useRouter } from "expo-router";
 
-import logo from '../assets/images/Logo.png'
+import Login from "./(Login)/Login"; 
 
-export default function Home(){
-    return (
-        <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView behavior='padding'>
-                <Image source={logo} style={styles.logo}/>
-                <View>
-                    <TextInput style={styles.input} placeholder='Seu e-mail' placeholderTextColor="#999" keyboardType='email-address' autoCapitalize='none' autoCorrect={false}/>
-                    <TextInput style={styles.input} placeholder='Sua senha' placeholderTextColor="#999" autoCapitalize='none' autoCorrect={false}/>
-                </View>
+SplashScreen.preventAutoHideAsync(); 
 
-                <TouchableOpacity style={styles.button}> 
-                    <Text style={styles.buttonText}> Fazer Login </Text>
-                </TouchableOpacity>
+export default function Splash() {
+  const router = useRouter();
+  const splashOpacity = useRef(new Animated.Value(1)).current;
+  const loginOpacity = useRef(new Animated.Value(0)).current;
+  const [showLogin, setShowLogin] = useState(false);
 
-            </KeyboardAvoidingView>
-        </SafeAreaView>
-    );
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLogin(true); // monta Login por baixo
+
+      Animated.parallel([
+        Animated.timing(splashOpacity, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(loginOpacity, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true,
+        }),
+      ]).start(async () => {
+
+        await SplashScreen.hideAsync();
+      });
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      {showLogin && (
+        <Animated.View style={[styles.container, { opacity: loginOpacity }]}>
+          <Login />
+        </Animated.View>
+      )}
+      <Animated.View style={[styles.container, { opacity: splashOpacity, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }]}>
+        <Animated.Image
+          source={require("../assets/images/Logo.png")}
+          style={styles.logo}
+        />
+      </Animated.View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#151414'
-    },
-    logo: {
-        position: 'absolute',
-        width: 81,
-        height: 140,
-        left: 175,
-        top: 135,
-    },
-    input: {
-        position: 'absolute',
-        width: 235,
-        height: 2,
-        left: 98,
-        top: 420,
-    },
-    button: {
-
-    },
-    buttonText: {
-
-    }
-})
+  container: {
+    flex: 1,
+    backgroundColor: "#151414",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    width: 130,
+    height: 225,
+    resizeMode: "contain",
+  },
+});
