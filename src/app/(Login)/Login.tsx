@@ -1,9 +1,13 @@
 import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign'
-
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
+
+import AntDesign from '@expo/vector-icons/AntDesign'
 import logo from '../../assets/images/Logo.png'
+import cadastroImage from '../../assets/images/cadastroImage.png'
+import Facebook from '../../assets/images/Facebook.png'
+import Google from '../../assets/images/Google.png'
+import Tiktok from '../../assets/images/TikTok.png'
 
 export default function LoginScreen() {
   const [isChecked, setChecked] = useState(false);
@@ -42,16 +46,28 @@ export default function LoginScreen() {
             </View>
           </View>
 
-          <View>
+          <View style={styles.sessao}>
             <TouchableOpacity style={styles.button}> 
               <Text style={styles.textbutton}> Iniciar Sessao </Text>
             </TouchableOpacity>
 
             <View style={styles.cadastroform}>
-              <Text style={styles.}> Fazer cadastro </Text>
-  
+              <Text style={styles.textcadastro}> Fazer cadastro </Text>
+              
+              <TouchableOpacity>
+                  <Image source={cadastroImage} style={{width: 26, height: 24}}/>
+              </TouchableOpacity>
             </View>
+
+            <Text style={styles.textoauth}> Fazer Login com </Text>
           </View>
+
+            
+            <TouchableOpacity style={styles.buttonoauth}>
+              <Image source={Facebook}/>
+              <Image source={Google}/>
+              <Image source={Tiktok}/>
+            </TouchableOpacity>
 
         </KeyboardAvoidingView>
       </SafeAreaView>
@@ -68,8 +84,8 @@ const styles = StyleSheet.create({
       width: 80,
       height: 140,
       resizeMode: 'contain',
-      marginTop: -165,
-      marginBottom: 80,
+      marginTop: -75,
+      marginBottom: 60,
     },
     form: {
       alignSelf: 'stretch',
@@ -98,6 +114,10 @@ const styles = StyleSheet.create({
       marginLeft: 28,
       fontFamily: 'IstokWeb-Regular'
     },
+    sessao: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     button: {
       marginTop: 80,
       borderRadius: 10,
@@ -117,6 +137,24 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: 'center',
       marginTop: 23,
+    },
+    textcadastro: {
+      fontFamily: 'IstokWeb-Regular',
+      color: 'white',
+      fontSize: 14,
+      marginRight: 10
+    },
+    textoauth: {
+      fontFamily: 'IstokWeb-Regular',
+      color: 'white',
+      fontSize: 14,
+      marginTop: 50
+    },
+    buttonoauth: {
+      flexDirection: "row",
+      justifyContent: 'center',
+      marginTop: 25,
+      gap: 20
     }
   },
 );
