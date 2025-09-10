@@ -2,18 +2,18 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-
+import  Header  from '../components/Header';
 SplashScreen.preventAutoHideAsync();
 
 export default function StackLayout() {
   const [loaded] = useFonts({
       'IstokWeb-Regular': require('../assets/fonts/IstokWeb-Regular.ttf'),
-      'IstokWeb-Bold': require('../assets/fonts/IstokWeb-Regular.ttf')
+      'IstokWeb-Bold': require('../assets/fonts/IstokWeb-Bold.ttf')
   });
 
-  useEffect(() => {
+  useEffect( () => {
     if (loaded) {
-      SplashScreen.hide();
+       SplashScreen.hide()
     }
   }, [loaded]);
 
@@ -21,7 +21,16 @@ export default function StackLayout() {
     return null;
   }
 
-  return <Stack  screenOptions={{headerShown: false}}/>;
+  return (
+      <Stack screenOptions={{
+        header: () => <Header />,
+        contentStyle: {backgroundColor: '#151414'}
+        }}>
+
+        <Stack.Screen name="index" options={{headerShown: false}}/>
+        <Stack.Screen name="(Login)/Login" options={{headerShown: false}}/>
+      </Stack>
+  )
 }
 
 

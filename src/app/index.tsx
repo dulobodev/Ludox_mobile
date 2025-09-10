@@ -5,15 +5,17 @@ import { useRouter } from "expo-router";
 
 import Login from "./(Login)/Login"; 
 
-SplashScreen.preventAutoHideAsync(); 
+SplashScreen.preventAutoHideAsync();
 
 export default function Splash() {
+  console.log("Index carregou!");
   const router = useRouter();
   const splashOpacity = useRef(new Animated.Value(1)).current;
   const loginOpacity = useRef(new Animated.Value(0)).current;
   const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
+    console.log("Splash index carregado!");
     const timer = setTimeout(() => {
       setShowLogin(true); // monta Login por baixo
 
@@ -29,7 +31,7 @@ export default function Splash() {
           useNativeDriver: true,
         }),
       ]).start(async () => {
-
+        console.log("Splash vai sumir!");
         await SplashScreen.hideAsync();
       });
     }, 2000);

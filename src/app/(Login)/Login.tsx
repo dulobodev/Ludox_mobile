@@ -1,6 +1,7 @@
 import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
+import { useRouter } from 'expo-router';
 
 import AntDesign from '@expo/vector-icons/AntDesign'
 import logo from '../../assets/images/Logo.png'
@@ -11,8 +12,9 @@ import Tiktok from '../../assets/images/TikTok.png'
 
 export default function LoginScreen() {
   const [isChecked, setChecked] = useState(false);
+  const router = useRouter();
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <KeyboardAvoidingView behavior='padding' style={styles.container}>
           <Image source={logo} style={styles.logo}/>
 
@@ -47,7 +49,7 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.sessao}>
-            <TouchableOpacity style={styles.button}> 
+            <TouchableOpacity style={styles.button} onPress={ () => router.push('/Home')}> 
               <Text style={styles.textbutton}> Iniciar Sessao </Text>
             </TouchableOpacity>
 
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
       width: 80,
       height: 140,
       resizeMode: 'contain',
-      marginTop: -75,
+      marginTop: -60,
       marginBottom: 60,
     },
     form: {

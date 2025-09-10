@@ -6,9 +6,20 @@ import { router } from 'expo-router';
 export default function Home() {
 
     return (
-        <View style={{ backgroundColor: 'blue'}}>
-            <Text> OLA </Text>
-        </View>
+        <SafeAreaView>
+
+            <Text> Paginaaaaaaaa </Text>
+
+        </SafeAreaView>
     )
 }
 
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+})
