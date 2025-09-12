@@ -3,12 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
-import AntDesign from '@expo/vector-icons/AntDesign'
-import logo from '../../assets/images/Logo.png'
-import cadastroImage from '../../assets/images/cadastroImage.png'
-import Facebook from '../../assets/images/Facebook.png'
-import Google from '../../assets/images/Google.png'
-import Tiktok from '../../assets/images/TikTok.png'
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import logo from '../../assets/images/Logo.png';
+import cadastroImage from '../../assets/images/cadastroImage.png';
+import Facebook from '../../assets/images/Facebook.png';
+import Google from '../../assets/images/Google.png';
+import Tiktok from '../../assets/images/TikTok.png';
 
 export default function LoginScreen() {
   const [isChecked, setChecked] = useState(false);
@@ -37,9 +37,9 @@ export default function LoginScreen() {
             <View style={styles.checks}>
                 <TouchableOpacity onPress={() => setChecked(!isChecked)}>
                   {isChecked ? (
-                    <View style={{backgroundColor: '#151414', borderRadius: 2, borderWidth: 1, borderColor: 'white', width: 19, height: 19}} />
+                    <FontAwesome name="square" size={21} color="white" />
                   ) : (
-                    <AntDesign name="checksquare" size={20} color="white" />
+                    <FontAwesome name="check-square" size={21} color="white" />
                   )}
                 </TouchableOpacity>
 

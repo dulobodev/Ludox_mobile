@@ -1,19 +1,23 @@
 import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
-import { router } from 'expo-router';
+import { router, usePathname, useSegments } from 'expo-router';
+
+import { Navigation } from "../components/Navigation";
 
 export default function Home() {
+    const segments  = useSegments();
+    console.log(segments)
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container }>
 
-            <Text> Paginaaaaaaaa </Text>
+            <Text style={{color: 'white'}}> HOME PAGE </Text>
 
+            <Navigation segments={segments}/>
         </SafeAreaView>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
