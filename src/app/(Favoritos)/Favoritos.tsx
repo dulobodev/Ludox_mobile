@@ -2,7 +2,7 @@ import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, S
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSegments } from 'expo-router';
 
-import { Navigation } from "../components/Navigation";
+import { Navigation } from "../../components/Navigation";
 
 export default function Home() {
     const segments  = useSegments();
@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <SafeAreaView style={styles.container }>
 
-            <Text style={{color: 'white'}}> CATEGORIAS PAGE </Text>
+            <Text style={{color: 'white'}}> FAVORITOS PAGE </Text>
 
             <Navigation segments={segments}/>
         </SafeAreaView>

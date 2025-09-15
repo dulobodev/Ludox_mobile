@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text, Dimensions, Image, StyleSheet, FlatList,TouchableHighlight} from "react-native";
 import { ProductSlider } from "../services/data";
-
 const { width } = Dimensions.get("window");
 
+import { useContador } from "../hooks/Count";
+
 export function Product() {
+  const { incrementar } = useContador();
+
   return (
     <View>
       <FlatList
@@ -34,7 +37,7 @@ export function Product() {
               </View>
             </View>
 
-            <TouchableHighlight underlayColor='#451794ff' style={styles.button}   onPress={() => {console.log("Botão pressionado!")}}>
+            <TouchableHighlight underlayColor='#451794ff' style={styles.button}   onPress={() => incrementar()}>
               <Text style={{ color: "white", textAlign: "center", fontFamily: "IstokWeb-Bold", fontSize: 15}}>
                 COMPRAR AGORA
               </Text>

@@ -2,7 +2,7 @@ import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, S
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSegments } from 'expo-router';
 
-import { Navigation } from "../components/Navigation";
+import { Navigation } from "../../components/Navigation";
 
 export default function Home() {
     const segments  = useSegments();

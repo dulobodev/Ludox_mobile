@@ -1,8 +1,9 @@
-import { KeyboardAvoidingView, View, Pressable, StyleSheet, Image} from "react-native";
+import {View, Pressable, StyleSheet, Image, Text} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SearchBar } from "react-native-elements"; 
-import React from "react";
+
+import { useContador } from "../hooks/Count";
 
 import back from '../assets/images/back.png'
 import shopping_cart from '../assets/images/shopping_cart.png'
@@ -24,13 +25,13 @@ const DATA = [
 ];
 
 
-export default function Home() {
+export default function Header() {
   // State to manage the filtered data and search input
-  const [data, setData] = React.useState(DATA);
+  const [data, setData] = useState(DATA);
   // State to manage the search input value
-  const [searchValue, setSearchValue] = React.useState(""); 
+  const [searchValue, setSearchValue] = useState(""); 
   // Ref to hold the original data
-  const arrayholder = React.useRef(DATA); 
+  const arrayholder = useRef(DATA); 
 
   // Function to handle search functionality
   const searchFunction = (text) => {
@@ -42,6 +43,8 @@ export default function Home() {
     setData(updatedData); 
     setSearchValue(text); 
   };
+
+  const { count } = useContador();
 
     return (
         <SafeAreaView style={{flex: 1}}>
@@ -85,6 +88,12 @@ export default function Home() {
 
             <Pressable style={styles.cart}>
                 <Image source={shopping_cart}/>
+
+                {count > 0 &&(
+                <View style={styles.count}>
+                  <Text style={{textAlign: 'center', fontSize: 10, color: '#7B2FFF', marginTop: 1, marginLeft: 1}}>{count}</Text>
+                </View>
+                )}
             </Pressable>
             </View>
         </SafeAreaView>
@@ -110,5 +119,14 @@ const styles = StyleSheet.create({
       marginLeft: 20,
       width: 24,
       height: 24
+    },
+    count: {
+      width:15,
+      height:15,
+      borderRadius: 10,
+      backgroundColor: 'white',
+      marginTop: -30,
+      marginLeft: 14,
+
     }
 })
