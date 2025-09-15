@@ -1,4 +1,4 @@
-import {create} from "zustand";
+import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -7,7 +7,7 @@ interface ContadorState {
   incrementar: () => void;
 }
 
-export const useContador = create(
+export const useContador = create<ContadorState>()(
   persist(
     (set) => ({
       count: 0,

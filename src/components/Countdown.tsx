@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 
 export function Countdown() {
   const [timeLeft, setTimeLeft] = useState(178160); 
@@ -17,11 +17,19 @@ export function Countdown() {
   const minutos = Math.floor((timeLeft % 3600) / 60);
   const segundos = timeLeft % 60;
 
-  const format = (num: number): string => num.toString().padStart(2, '0');
+  const format = (num: number): string => num.toString().padStart(2, "0");
 
   return (
-    <Text style={{ color: "#7B2FFF", fontFamily: "IstokWeb-Bold", fontSize: 15 }}>
+    <Text style={styles.countdownText}>
       {format(dias)}D {format(horas)}:{format(minutos)}:{format(segundos)}
     </Text>
   );
 }
+
+const styles = StyleSheet.create({
+  countdownText: {
+    color: "#7B2FFF",
+    fontFamily: "IstokWeb-Bold",
+    fontSize: 15,
+  },
+});

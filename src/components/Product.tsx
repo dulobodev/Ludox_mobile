@@ -1,9 +1,17 @@
 import React from "react";
-import { View, Text, Dimensions, Image, StyleSheet, FlatList,TouchableHighlight} from "react-native";
+import {
+  View,
+  Text,
+  Dimensions,
+  Image,
+  StyleSheet,
+  FlatList,
+  TouchableHighlight,
+} from "react-native";
 import { ProductSlider } from "../services/data";
-const { width } = Dimensions.get("window");
-
 import { useContador } from "../hooks/Count";
+
+const { width } = Dimensions.get("window");
 
 export function Product() {
   const { incrementar } = useContador();
@@ -19,12 +27,15 @@ export function Product() {
         ItemSeparatorComponent={() => <View style={{ width: 15 }} />}
         renderItem={({ item }) => (
           <View style={[styles.itemContainer, { width: width * 0.85 }]}>
-
             <View style={styles.row}>
               <Image source={item.Image} style={styles.image} />
 
               <View style={styles.infocontainer}>
-                <Text numberOfLines={2} ellipsizeMode="tail" style={styles.text}>
+                <Text
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={styles.text}
+                >
                   {item.Nome}
                 </Text>
                 <Text style={styles.textvalor}>{item.Valor}</Text>
@@ -37,10 +48,12 @@ export function Product() {
               </View>
             </View>
 
-            <TouchableHighlight underlayColor='#451794ff' style={styles.button}   onPress={() => incrementar()}>
-              <Text style={{ color: "white", textAlign: "center", fontFamily: "IstokWeb-Bold", fontSize: 15}}>
-                COMPRAR AGORA
-              </Text>
+            <TouchableHighlight
+              underlayColor="#451794ff"
+              style={styles.button}
+              onPress={() => incrementar()}
+            >
+              <Text style={styles.buttonText}>COMPRAR AGORA</Text>
             </TouchableHighlight>
           </View>
         )}
@@ -88,5 +101,11 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingVertical: 10,
     borderRadius: 5,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontFamily: "IstokWeb-Bold",
+    fontSize: 15,
   },
 });

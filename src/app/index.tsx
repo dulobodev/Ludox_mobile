@@ -46,7 +46,19 @@ export default function Splash() {
           <Login />
         </Animated.View>
       )}
-      <Animated.View style={[styles.container, { opacity: splashOpacity, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }]}>
+      <Animated.View
+        style={[
+          styles.container,
+          {
+            opacity: splashOpacity,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          },
+        ]}
+      >
         <Animated.Image
           source={require("../assets/images/Logo.png")}
           style={styles.logo}
