@@ -11,23 +11,23 @@ export function Navigation({ segments }) {
         <View style={styles.container}>
 
             <View style={styles.navigation}>
-                <Pressable style={styles.button} onPress={ () => router.push('/Home')}>
-                    <FontAwesome name="home" size={25} color={segments.includes('Home') ? "white" : "#BD97FF"} />
+                <Pressable style={styles.button} onPress={ () => router.replace('/Home')}>
+                    <FontAwesome name="home" size={22} color={segments.includes('Home') ? "white" : "#BD97FF"} />
                     <Text style={styles.text}> Home </Text>
                 </Pressable>
 
-                <Pressable style={styles.button}>
-                    <FontAwesome name="bars" size={25} color={segments.includes('Categorias') ? "white" : "#BD97FF"} />
+                <Pressable style={styles.button} onPress={ () => router.replace('/Categorias')}>
+                    <FontAwesome name="bars" size={22} color={segments.includes('Categorias') ? "white" : "#BD97FF"} />
                     <Text style={styles.text}> Categorias </Text>
                 </Pressable>
 
-                <Pressable style={styles.button}>
-                    <FontAwesome name="heart" size={25} color={segments.includes('Favoritos') ? "white" : "#BD97FF"} />
+                <Pressable style={styles.button} onPress={ () => router.replace('/Favoritos')}>
+                    <FontAwesome name="heart" size={22} color={segments.includes('Favoritos') ? "white" : "#BD97FF"} />
                     <Text style={styles.text}> Favoritos </Text>
                 </Pressable>
 
-                <Pressable style={styles.button}>
-                    <FontAwesome name="user" size={25} color={segments.includes('User') ? "white" : "#BD97FF"}  />
+                <Pressable style={styles.button} onPress={ () => router.replace('/User')}>
+                    <FontAwesome name="user" size={22} color={segments.includes('User') ? "white" : "#BD97FF"}  />
                     <Text style={styles.text}> Conta </Text>
                 </Pressable>
             </View>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     },
     text: {
         marginTop: 1,
-        fontSize: 14,
+        fontSize: 13,
         marginLeft: 2,
         color: 'white'
     }

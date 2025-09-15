@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from "react-native";
+import { KeyboardAvoidingView, View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Platform} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
@@ -15,7 +15,7 @@ export default function LoginScreen() {
   const router = useRouter();
   return (
       <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Image source={logo} style={styles.logo}/>
 
           <View style={styles.form}>
@@ -35,16 +35,21 @@ export default function LoginScreen() {
             autoCorrect={false}/>
 
             <View style={styles.checks}>
+            
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <TouchableOpacity onPress={() => setChecked(!isChecked)}>
                   {isChecked ? (
-                    <FontAwesome name="square" size={21} color="white" />
-                  ) : (
                     <FontAwesome name="check-square" size={21} color="white" />
+                  ) : (
+                    <FontAwesome name="square" size={21} color="white" />
                   )}
                 </TouchableOpacity>
 
                 <Text style={styles.text}> Lembrar de mim </Text>
-                <Text style={styles.text2}> Esqueceu a senha? </Text>
+              </View>
+
+  
+              <Text style={styles.text2}> Esqueceu a senha? </Text>
             </View>
           </View>
 
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
       width: 80,
       height: 140,
       resizeMode: 'contain',
-      marginTop: -60,
+      marginTop: -20,
       marginBottom: 60,
     },
     form: {
@@ -96,24 +101,25 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       borderColor: '#f0f0f0',
       width: 290,
-      marginTop: 25,
+      marginTop: 35,
+      paddingBottom: 10,
       color: '#fff'
     },
     checks: {
       flexDirection: "row",
       alignItems: "center",
-      marginTop: 23
+      justifyContent: "space-between",
+      marginTop: 23,
     },
     text: {
-      fontSize: 14,
+      fontSize: 13,
       color: 'white',
       marginLeft: 3,
       fontFamily: 'IstokWeb-Regular'
     },
     text2: {
-      fontSize: 14,
+      fontSize: 13,
       color: 'white',
-      marginLeft: 28,
       fontFamily: 'IstokWeb-Regular'
     },
     sessao: {

@@ -95,6 +95,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
       flexDirection: 'row',
+      backgroundColor: '#151414',
       alignItems: 'center',
       justifyContent: 'flex-start',
       height: 75,
