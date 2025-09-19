@@ -77,10 +77,6 @@ As fontes `IstokWeb-Regular.ttf` e `IstokWeb-Bold.ttf` são carregadas em `src/a
 - Implementar autenticação (OAuth/Email+Senha)
 - Estados de carregamento/erro
 - Testes (unitários e E2E)
-<<<<<<< HEAD
-- Acessibilidade e i18n
-=======
->>>>>>> edd7870cb49db3ffef4d21b44850f77c576137b1
 
 ## 🐞 Dicas e Solução de Problemas
 - Se as fontes não carregarem: confirme caminhos e nome das fontes em `_layout.tsx`

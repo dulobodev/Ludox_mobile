@@ -9,8 +9,11 @@ import {
   Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
 import { useRouter } from "expo-router";
+import { z } from "zod";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import logo from "../../assets/images/Logo.png";
@@ -19,32 +22,86 @@ import Facebook from "../../assets/images/Facebook.png";
 import Google from "../../assets/images/Google.png";
 import Tiktok from "../../assets/images/TikTok.png";
 
+
+const loginSchema = z.object({
+  email: z.string().email("E-mail inválido"),
+  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+});
+
+
+type LoginSchema = z.infer<typeof loginSchema>;
+
 export default function LoginScreen() {
-  const [isChecked, setChecked] = useState(false);
   const router = useRouter();
+  const [isChecked, setChecked] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (data: LoginSchema) => {
+    console.log("Dados do login:", data);
+    router.push("/Home");
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={styles.container}
+      >
         <Image source={logo} style={styles.logo} />
 
         <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="E-mail"
-            placeholderTextColor="#7E7E7E"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
+          {/* Email */}
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="E-mail"
+                placeholderTextColor="#7E7E7E"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
           />
+          {errors.email && (
+            <Text style={styles.errorText}>{errors.email.message}</Text>
+          )}
 
-          <TextInput
-            style={styles.input}
-            placeholder="Senha"
-            placeholderTextColor="#7E7E7E"
-            autoCapitalize="none"
-            autoCorrect={false}
+          {/* Senha */}
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Senha"
+                placeholderTextColor="#7E7E7E"
+                secureTextEntry
+                autoCapitalize="none"
+                autoCorrect={false}
+                value={value}
+                onChangeText={onChange}
+              />
+            )}
           />
+          {errors.password && (
+            <Text style={styles.errorText}>{errors.password.message}</Text>
+          )}
 
           <View style={styles.checks}>
             <View style={styles.checkboxContainer}>
@@ -63,10 +120,7 @@ export default function LoginScreen() {
         </View>
 
         <View style={styles.sessao}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => router.push("/Home")}
-          >
+          <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
             <Text style={styles.textbutton}> Iniciar Sessao </Text>
           </TouchableOpacity>
 
@@ -119,6 +173,12 @@ const styles = StyleSheet.create({
     marginTop: 35,
     paddingBottom: 10,
     color: "#fff",
+  },
+  errorText: {
+    color: "red",
+    fontSize: 12,
+    marginTop: 5,
+    marginLeft: 5,
   },
   checks: {
     flexDirection: "row",

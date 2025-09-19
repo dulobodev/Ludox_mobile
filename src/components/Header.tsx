@@ -6,7 +6,7 @@ import {
   Text,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { SearchBar } from "react-native-elements";
 
 import { useContador } from "../hooks/Count";
@@ -20,7 +20,7 @@ const DATA = [
 ];
 
 
-export default function Header() {
+function Header() {
   // State to manage the filtered data and search input
   const [data, setData] = useState(DATA);
   // State to manage the search input value
@@ -79,6 +79,7 @@ export default function Header() {
   );
 }
 
+export default React.memo(Header);
 
 const styles = StyleSheet.create({
   safeArea: {

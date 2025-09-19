@@ -24,17 +24,18 @@ export default function StackLayout() {
   }
 
   return (
-    <SafeAreaProvider>
+
       <Stack
         screenOptions={{
           header: () => <Header />,
           contentStyle: { backgroundColor: "#151414" },
+          animation: "none",
+          freezeOnBlur: true,
         }}
       >
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(Login)/Login" options={{ headerShown: false }} />
       </Stack>
-    </SafeAreaProvider>
   );
 }
 
