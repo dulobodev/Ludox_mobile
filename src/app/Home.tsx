@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router, usePathname, useSegments } from "expo-router";
+import {useSegments } from "expo-router";
 
 import { Countdown } from "../components/Countdown";
 import { Navigation } from "../components/Navigation";
@@ -18,6 +18,7 @@ import { Product } from "../components/Product";
 
 export default function Home() {
   const segments = useSegments();
+
 
   return (
     <SafeAreaView style={styles.container}>

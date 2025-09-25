@@ -22,11 +22,13 @@ import Facebook from "../../assets/images/Facebook.png";
 import Google from "../../assets/images/Google.png";
 import Tiktok from "../../assets/images/TikTok.png";
 
+import api from '../../services/api'
 
 const loginSchema = z.object({
   email: z.string().email("E-mail inválido"),
   password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
 });
+
 
 
 type LoginSchema = z.infer<typeof loginSchema>;
@@ -47,17 +49,21 @@ export default function LoginScreen() {
     },
   });
 
-  const onSubmit = (data: LoginSchema) => {
-    console.log("Dados do login:", data);
-    router.push("/Home");
+  const onSubmit = async (data: LoginSchema) => {
+    try {
+      const response = await api.post("/login", data);
+      console.log("Usuário logado:", response.data);
+      router.push("/Home");
+    } catch (error) {
+      console.error("Erro ao logar:", error);
+      alert("Falha no login. Verifique suas credenciais.");
+    }
   };
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={styles.container}
-      >
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Image source={logo} style={styles.logo} />
 
         <View style={styles.form}>
@@ -120,7 +126,10 @@ export default function LoginScreen() {
         </View>
 
         <View style={styles.sessao}>
-          <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+          <TouchableOpacity style={styles.button} onPress={() => {
+              console.log("Botão pressionado!")
+              handleSubmit(onSubmit)()
+          }}>
             <Text style={styles.textbutton}> Iniciar Sessao </Text>
           </TouchableOpacity>
 
