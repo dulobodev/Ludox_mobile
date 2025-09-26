@@ -7,7 +7,9 @@ import {
   StyleSheet,
   FlatList,
   TouchableHighlight,
+  Pressable,
 } from "react-native";
+import { router } from "expo-router";
 import { useContador } from "../hooks/Count";
 
 import api from '../services/api'
@@ -32,6 +34,7 @@ export function Product() {
     const fetchProducts = async () => {
       try {
         const response = await api.get("/products");
+          console.log(response.data)
         setProducts(response.data);
       } catch (error) {
         console.error("Erro ao buscar produtos:", error);
@@ -40,6 +43,7 @@ export function Product() {
 
     fetchProducts();
   }, []);
+
 return (
     <View>
       <FlatList
@@ -50,32 +54,37 @@ return (
         contentContainerStyle={{ paddingHorizontal: 10 }}
         ItemSeparatorComponent={() => <View style={{ width: 15 }} />}
         renderItem={({ item }) => (
-          <View style={[styles.itemContainer, { width: width * 0.85 }]}>
-            <View style={styles.row}>
-              <Image source={{ uri: `http://192.168.15.4:8000${item.image_url}` }} style={styles.image} />
+          <Pressable onPress={() => {
+          router.push({ pathname: "/Produto/[id]", 
+          params: { title: item.title, image: item.image_url, value: item.value, parcela: item.parcela } });
+        }}>
+            <View style={[styles.itemContainer, { width: width * 0.85 }]}>
+              <View style={styles.row}>
+                <Image source={{ uri: `http://192.168.15.6:8000${item.image_url}` }} style={styles.image} />
 
-              <View style={styles.infocontainer}>
-                <Text numberOfLines={2} ellipsizeMode="tail" style={styles.text}>
-                  {item.title}
-                </Text>
-                <Text style={styles.textvalor}>R$ {item.value}</Text>
-                <Text style={[styles.text, { color: "#999" }]}>
-                  A vista no PIX{"\n"}ou{" "}
-                  <Text style={{ color: "#fff" }}>
-                    {item.parcela}x sem juros no cartão
+                <View style={styles.infocontainer}>
+                  <Text numberOfLines={2} ellipsizeMode="tail" style={styles.text}>
+                    {item.title}
                   </Text>
-                </Text>
+                  <Text style={styles.textvalor}>R$ {item.value}</Text>
+                  <Text style={[styles.text, { color: "#999" }]}>
+                    A vista no PIX{"\n"}ou{" "}
+                    <Text style={{ color: "#fff" }}>
+                      {item.parcela}x sem juros no cartão
+                    </Text>
+                  </Text>
+                </View>
               </View>
-            </View>
 
-            <TouchableHighlight
-              underlayColor="#451794ff"
-              style={styles.button}
-              onPress={() => incrementar()}
-            >
-              <Text style={styles.buttonText}>COMPRAR AGORA</Text>
-            </TouchableHighlight>
-          </View>
+              <TouchableHighlight
+                underlayColor="#451794ff"
+                style={styles.button}
+                onPress={() => incrementar()}
+              >
+                <Text style={styles.buttonText}>COMPRAR AGORA</Text>
+              </TouchableHighlight>
+            </View>
+          </Pressable>
         )}
       />
     </View>
