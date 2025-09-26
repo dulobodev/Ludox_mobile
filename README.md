@@ -50,6 +50,10 @@ assets/
    - Android (emulador ou dispositivo com Expo Go)
    - iOS (simulador ou dispositivo com Expo Go)
    - Web (opcional, via Expo)
+4. Altere a uri:
+   - Na pasta services, no arquivo api.ts, coloque a uri do seu emulador
+   - Na pasta components, no arquivo Product.tsx faca a mesma coisa
+
 
 ## 🔡 Fontes
 As fontes `IstokWeb-Regular.ttf` e `IstokWeb-Bold.ttf` são carregadas em `src/app/_layout.tsx` via `useFonts`. Certifique-se de que os arquivos existam em `src/assets/fonts/`.
